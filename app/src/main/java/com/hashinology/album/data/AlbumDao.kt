@@ -19,5 +19,8 @@ interface AlbumDao {
     suspend fun delete(albumModel: AlbumModel)
 
     @Query("Select * From MovieTable")
-    fun getAlbumList(): LiveData<AlbumModel>
+    fun getAlbumListRoom(): LiveData<AlbumModel>
+
+    @Query("Select Exists(Select 1 from MovieTable where title = :titleName)")
+    suspend fun isExisits(titleName: String): Boolean
 }

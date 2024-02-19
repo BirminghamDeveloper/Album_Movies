@@ -27,12 +27,12 @@ abstract class AlbumDB: RoomDatabase() {
             return instance!!
         }
 
-        private fun instanceSetup(context: Context) {
+        private fun instanceSetup(context: Context){
             Room.databaseBuilder(
-                context,
+                context.applicationContext,
                 AlbumDB::class.java,
                 "albumDB"
-            )
+            ).build()
         }
     }
 }
